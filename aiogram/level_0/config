@@ -1,0 +1,4 @@
+class Config:
+    def read(self, reader):
+        data = reader.read()
+        return
