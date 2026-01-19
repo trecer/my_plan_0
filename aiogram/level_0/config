@@ -1,4 +1,19 @@
-class Config:
-    def read(self, reader):
+from abc import ABC, abstractmethod
+from typing import Dict
+
+
+class BaseReader(ABC):
+    
+    @abstractmethod
+    def read(self) -> Dict:
+        pass
+
+
+class Settings:
+    def __init__(self, reader: BaseReader):
+        self.data = reader.read()
+        self.bot_token = self.data.get("bot_token")
+
+    def read(self, reader: BaseReader):
         data = reader.read()
-        return
+        return data
