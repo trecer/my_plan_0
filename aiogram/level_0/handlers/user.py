@@ -5,6 +5,8 @@ from aiogram.filters import or_f
 
 
 from .keyboards.inline import inline_kb_fill_out_form
+from .states.form import Form
+
 
 router = Router()
 
