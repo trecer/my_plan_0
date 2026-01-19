@@ -7,7 +7,7 @@ router = Router()
 
 
 # router.message.filter(F.from_user.id.in_({admin_ids})
-# router.callback_query.filter(F.from_user.id.in_({admin_ids})
+router.callback_query.filter(F.from_user.id.in_({admin_ids})
 
 
 @router.callback_query(F.data == "get_users")
