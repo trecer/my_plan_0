@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Dict
+import os
+
+from dotenv import dotenv_values
 
 
 class BaseReader(ABC):
@@ -12,8 +15,11 @@ class BaseReader(ABC):
 
 class EnvReader(BaseReader):
     def read(self) -> Dict:
-        with open(".env") as file:
-            data = file.read()
+        kwargs = dotenv_values()
+        data = {}
+        for k, v in kwargs.items():
+            data[k] = v
+        print(data)
         return data
 
 
