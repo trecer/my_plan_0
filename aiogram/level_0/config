@@ -3,13 +3,22 @@ from typing import Dict
 
 
 class BaseReader(ABC):
-    
+
     @abstractmethod
     def read(self) -> Dict:
         pass
 
 
+
+class EnvReader(BaseReader):
+    def read(self) -> Dict:
+        with open(".env") as file:
+            data = file.read()
+        return data
+
+
 class Settings:
+
     def __init__(self, reader: BaseReader):
         self.data = reader.read()
         self.bot_token = self.data.get("bot_token")
@@ -18,4 +27,5 @@ class Settings:
         data = reader.read()
         return data
 
-settings: Settings()
+
+settings = Settings(EnvReader())
