@@ -17,3 +17,5 @@ class Settings:
     def read(self, reader: BaseReader):
         data = reader.read()
         return data
+
+settings: Settings()
